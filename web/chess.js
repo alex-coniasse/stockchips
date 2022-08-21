@@ -6,7 +6,7 @@ var dy = 1;
 const rectangleSize  = 50;
 var pieces = [];
 var piecesImg = {};
-var imgPath = "img/chesspieces/wikipedia/";
+var imgPath = "web/img/chesspieces/wikipedia/";
 var fen = document.getElementById("fen").value;
 
 var dragging = false;
