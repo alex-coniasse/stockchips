@@ -18,6 +18,11 @@ canvas.onmousemove=handleMouseMove;
 canvas.onmouseup=handleMouseUp;
 canvas.onmouseout=handleMouseOut;
 
+canvas.ontouchstart=handleMouseDown;
+canvas.ontouchmove=handleMouseMove;
+canvas.ontouchend=handleMouseUp;
+canvas.ontouchcancel=handleMouseOut;
+
 class Piece {
     constructor(img, x=rectangleSize/2, y=rectangleSize/2) {
         this.img = img;
