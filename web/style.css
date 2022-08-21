@@ -15,6 +15,7 @@ h1 {
 }
 
 body {
+    touch-action: none;
     width: 600px;
     margin: 0 auto;
     background-color: #404346bd;
