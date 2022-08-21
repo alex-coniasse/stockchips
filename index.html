@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>StockChips chess engine</title>
+     <!-- Basic css --> 
+    <!-- <style>
+      * { padding: 0; margin: 0; }
+      canvas { background: rgb(255, 255, 255); display: block; margin: 0 auto; }
+      p { }
+    </style> -->
+    <link href="web/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <h1>Welcome to StockChips UI !
+  </h1> <br>
+    <p>        
+      <label for="colorpicker">Board color:</label><br><br>
+      <input type="color" id="colorpicker" value="#009900"><br><br>
+    
+      <label for="fen">FEN:</label> <br><br>
+      <textarea id="fen" rows="4" cols="50">rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+      </textarea> <br><br>
+      <button id="Update" onclick="updateBoard()"> Update </button> <br><br>
+      <button id="Reset" onclick="reset()"> Reset board </button>
+    </p>
+
+    <canvas id="myCanvas" width="512" height="512"></canvas>
+    <script src="web/chess.js"></script>
+
+</body>
+</html>

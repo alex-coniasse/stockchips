@@ -1,0 +1,24 @@
+html {
+    background-color: #404346;
+    background-image: url("img/chips.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+p, h1 {
+    color : #d8dde2;
+}
+
+h1 {
+    margin: 0;
+    padding: 20px 0;
+    text-shadow: 3px 3px 1px black;
+}
+
+body {
+    width: 600px;
+    margin: 0 auto;
+    background-color: #404346bd;
+    padding: 0 20px 20px 20px;
+    /* border: 5px solid black; */
+  }
+  
