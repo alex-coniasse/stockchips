@@ -15,11 +15,16 @@ h1 {
 }
 
 body {
-    touch-action: none;
     width: 600px;
     margin: 0 auto;
     background-color: #404346bd;
     padding: 0 20px 20px 20px;
     /* border: 5px solid black; */
   }
+.lock-screen {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+    position: fixed;
+}
   
