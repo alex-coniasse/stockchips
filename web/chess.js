@@ -18,29 +18,36 @@ canvas.onmousemove=handleMouseMove;
 canvas.onmouseup=handleMouseUp;
 canvas.onmouseout=handleMouseOut;
 
-canvas.ontouchstart=handleMouseDown;
-canvas.ontouchmove=handleMouseMove;
-canvas.ontouchend=handleMouseUp;
-canvas.ontouchcancel=handleMouseOut;
+// canvas.ontouchstart=handleMouseDown;
+// canvas.ontouchmove=handleMouseMove;
+// canvas.ontouchend=handleMouseUp;
+// canvas.ontouchcancel=handleMouseOut;
 
 class Piece {
     constructor(img, x=rectangleSize/2, y=rectangleSize/2) {
         this.img = img;
         this.x = x;
         this.y = y;
+        this.alive = true;
     };
     draw(){
-        ctx.drawImage(this.img, this.x, this.y, rectangleSize, rectangleSize);
+        if(this.alive) {
+            ctx.drawImage(this.img, this.x, this.y, rectangleSize, rectangleSize);
+        }
     };
 };
 
 function pieceOnMouse(x, y) {
     for (p of pieces) {
-            if (x > p.x && x < p.x + rectangleSize && 
-                y > p.y && y < p.y + rectangleSize) {
+            if (p.alive && x >= p.x && x < p.x + rectangleSize && 
+                y >= p.y && y < p.y + rectangleSize) {
+                console.log(p);
+                if(p != draggedPiece) {
                     return p;
                 }
-        } 
+                }
+        }
+    
 }
 var squaresPositions = [];
 for (let k = 0; k < 8; k++){
@@ -63,7 +70,7 @@ function handleMouseDown(e) {
     let relativeY = e.clientY - canvas.offsetTop;
     draggedPiece = pieceOnMouse(relativeX, relativeY);
     draggedPiecePos = [draggedPiece.x, draggedPiece.y];
-    console.log(draggedPiece);
+    
 }
 
 function handleMouseMove(e) {
@@ -73,7 +80,6 @@ function handleMouseMove(e) {
         if(draggedPiece) {
             draggedPiece.x = relativeX - rectangleSize/2;
             draggedPiece.y = relativeY - rectangleSize/2;
-            console.log(draggedPiece);
         }
     }
 }
@@ -83,7 +89,14 @@ function handleMouseUp(e) {
         let relativeX = e.clientX - canvas.offsetLeft;
         let relativeY = e.clientY - canvas.offsetTop;
         let pos = squareOnMouse(relativeX, relativeY)
-        if(pos) {  
+        if(pos) { 
+
+            let captured = pieceOnMouse(pos[0], pos[1]);
+            if (captured) {
+                captured.alive = false;
+                console.warn("capture");
+
+            }
             draggedPiece.x = pos[0];
             draggedPiece.y = pos[1];
         }
@@ -175,7 +188,13 @@ function boardFromFEN(fen) {
 
 function drawPieces() {
     for(let p of pieces) {
-        p.draw();
+        if (p != draggedPiece){
+            p.draw();
+        }
+        // Draw the dragged piece on top
+        if(draggedPiece){
+            draggedPiece.draw();
+        }
     }
 }
 
