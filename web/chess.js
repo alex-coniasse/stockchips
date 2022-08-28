@@ -66,8 +66,8 @@ function squareOnMouse(x, y) {
 
 function handleMouseDown(e) {
     dragging = true;
-    let relativeX = e.clientX - canvas.offsetLeft;
-    let relativeY = e.clientY - canvas.offsetTop;
+    let relativeX = e.pageX - canvas.offsetLeft;
+    let relativeY = e.pageY - canvas.offsetTop;
     draggedPiece = pieceOnMouse(relativeX, relativeY);
     draggedPiecePos = [draggedPiece.x, draggedPiece.y];
     
@@ -75,8 +75,8 @@ function handleMouseDown(e) {
 
 function handleMouseMove(e) {
     if(dragging) {
-        let relativeX = e.clientX - canvas.offsetLeft;
-        let relativeY = e.clientY - canvas.offsetTop;
+        let relativeX = e.pageX - canvas.offsetLeft;
+        let relativeY = e.pageY - canvas.offsetTop;
         if(draggedPiece) {
             draggedPiece.x = relativeX - rectangleSize/2;
             draggedPiece.y = relativeY - rectangleSize/2;
@@ -86,8 +86,8 @@ function handleMouseMove(e) {
 
 function handleMouseUp(e) {
     if(dragging && draggedPiece){
-        let relativeX = e.clientX - canvas.offsetLeft;
-        let relativeY = e.clientY - canvas.offsetTop;
+        let relativeX = e.pageX - canvas.offsetLeft;
+        let relativeY = e.pageY - canvas.offsetTop;
         let pos = squareOnMouse(relativeX, relativeY)
         if(pos) { 
 

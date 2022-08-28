@@ -1,9 +1,13 @@
 html {
-    background-color: #404346;
-    background-image: url("img/chips.jpg");
-    background-repeat: no-repeat;
-    background-size: 100%;
-  }
+  background: url(images/bg.jpg) no-repeat center center fixed;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 10%;
+  height: 10%;
+  padding-top: 66.64%; /* (img-height / img-width * container-width) */
+              /* (853 / 1280 * 100) */
+}
+
 p, h1 {
     color : #d8dde2;
 }
