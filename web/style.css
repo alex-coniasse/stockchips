@@ -1,5 +1,5 @@
 html {
-  background: url(images/bg.jpg) no-repeat center center fixed;
+  background: url("img/chips.jpg") no-repeat center center fixed;
   background-size: contain;
   background-repeat: no-repeat;
   width: 10%;

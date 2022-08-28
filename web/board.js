@@ -24,7 +24,10 @@ canvas.onmouseout=handleMouseOut;
 // canvas.ontouchcancel=handleMouseOut;
 
 class Piece {
-    constructor(img, x=rectangleSize/2, y=rectangleSize/2) {
+    constructor(name, img, x=rectangleSize/2, y=rectangleSize/2) {
+        this.name = name
+        this.color = name[0];
+        this.type = name[1];
         this.img = img;
         this.x = x;
         this.y = y;
@@ -92,13 +95,19 @@ function handleMouseUp(e) {
         if(pos) { 
 
             let captured = pieceOnMouse(pos[0], pos[1]);
-            if (captured) {
+            if (captured && captured.color != draggedPiece.color) {
                 captured.alive = false;
                 console.warn("capture");
 
             }
-            draggedPiece.x = pos[0];
-            draggedPiece.y = pos[1];
+            if (captured && captured.color == draggedPiece.color) {
+                draggedPiece.x = draggedPiecePos[0];
+                draggedPiece.y = draggedPiecePos[1];
+            }
+            else {
+                draggedPiece.x = pos[0];
+                draggedPiece.y = pos[1];
+            }
         }
         else {
             draggedPiece.x = draggedPiecePos[0];
@@ -155,7 +164,7 @@ loadImages();
 function createPiece(name, x=25, y=25) {
     if (['wP', 'wN', 'wB', 'wR', 'wQ', 'wK',
             'bP', 'bN', 'bB', 'bR', 'bQ', 'bK'].includes(name)) {
-        return new Piece(piecesImg[name], x, y);
+        return new Piece(name, piecesImg[name], x, y);
         }
     else throw 'Bad Name';
 }
@@ -209,6 +218,7 @@ boardFromFEN(fen);
 function updateBoard() {
     fen = document.getElementById("fen").value;
     boardFromFEN(fen);
+    set_fen(fen);
 }
 function reset() {
     fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq";
