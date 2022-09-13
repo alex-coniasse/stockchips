@@ -1,28 +1,27 @@
 html {
-  background: url("img/chips.jpg") no-repeat center center fixed;
+  background: url("https://img.freepik.com/free-vector/realistic-vintage-vaporwave-background_23-2148887268.jpg?w=996&t=st=1663096116~exp=1663096716~hmac=3b2d2e43cda9b56b02011c0940461e821b713e254a4ba803ab9614d108f94b22") no-repeat center fixed;
+  background-color: #151515;
   background-size: contain;
   background-repeat: no-repeat;
-  width: 10%;
-  height: 10%;
-  padding-top: 66.64%; /* (img-height / img-width * container-width) */
-              /* (853 / 1280 * 100) */
+  text-align: center;
 }
 
 p, h1 {
-    color : #d8dde2;
+    color : #e2d8e2;
+    font-family: "verdana";
 }
 
 h1 {
-    margin: 0;
-    padding: 20px 0;
+    margin: auto;
+    padding: auto;
     text-shadow: 3px 3px 1px black;
+    
 }
 
 body {
-    width: 600px;
-    margin: 0 auto;
+    width:60%;
+    margin-left:auto;
+    margin-right:auto;
     background-color: #404346bd;
-    padding: 0 20px 20px 20px;
     /* border: 5px solid black; */
   }
-  
